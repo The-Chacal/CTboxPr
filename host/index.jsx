@@ -19,6 +19,9 @@ function exportShots(){
         }
     }
     if( tracksToAnalyse.length < 1 ){ alert( "No selection detected." ); return ; }
+    //Preparing the export.
+    var destinationFolder = Folder.myDocuments.selectDlg( "Where do you want to save the exports?" );
+    if( destinationFolder == null ){ return ; }
     //Saving the original In and Out points for the active Sequence.
     var originalInPoint = currentSequence.getInPointAsTime().ticks ;
     var originalOutPoint = currentSequence.getOutPointAsTime().ticks ;
@@ -30,7 +33,7 @@ function exportShots(){
             var endTime = currentClip.end.ticks ;
             currentSequence.setInPoint( startTime );
             currentSequence.setOutPoint( endTime );
-            currentSequence.exportAsMediaDirect( "D:\\TestPremiere\\" + currentClip.name + ".mov" , "C:\\Users\\SylvainL\\Documents\\Adobe\\Adobe Media Encoder\\23.0\\Presets\\H264.epr" , 1 );
+            currentSequence.exportAsMediaDirect( destinationFolder.fsName.replace( "\\" , "\\\\" ) + "\\" + currentClip.name + ".mov" , Folder.myDocuments.fsName.replace(" \\" , "\\\\" ) + "\\Adobe\\Adobe Media Encoder\\23.0\\Presets\\CTbox.epr" , 1 );
         }
     }
     currentSequence.setInPoint( originalInPoint );
