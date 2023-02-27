@@ -33,7 +33,11 @@ function exportShots(){
             var endTime = currentClip.end.ticks ;
             currentSequence.setInPoint( startTime );
             currentSequence.setOutPoint( endTime );
-            currentSequence.exportAsMediaDirect( destinationFolder.fsName.replace( "\\" , "\\\\" ) + "\\" + currentClip.name + ".mov" , Folder.myDocuments.fsName.replace(" \\" , "\\\\" ) + "\\Adobe\\Adobe Media Encoder\\23.0\\Presets\\CTbox.epr" , 1 );
+            if( $.os.search( "Windows" ) != - 1 ){
+                currentSequence.exportAsMediaDirect( destinationFolder.fsName.replace( "\\" , "\\\\" ) + "\\" + currentClip.name + ".mov" , Folder.myDocuments.fsName.replace(" \\" , "\\" ) + "\\Adobe\\Adobe Media Encoder\\23.0\\Presets\\CTbox.epr" , 1 );
+            } else {
+                currentSequence.exportAsMediaDirect( destinationFolder.fsName + "/" + currentClip.name + ".mov" , Folder.myDocuments.fsName + "/Adobe/Adobe Media Encoder/23.0/Presets/CTbox.epr" , 1 );
+            }
         }
     }
     currentSequence.setInPoint( originalInPoint );
