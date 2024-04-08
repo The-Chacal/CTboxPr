@@ -28,15 +28,19 @@ function exportShots(){
     //Parsing saved Layers and exporting all the clips on it individually.
     for( i = 0 ; i < tracksToAnalyse.length ; i++ ){
         for( j = 0 ; j < tracksToAnalyse[i].clips.numItems ; j++ ){
+            var nb = j ;
+            if( j < 10 ){ nb = "000" + j ;}
+            else if( j< 100 ){ nb = "00" + j ;}
+            else if( j < 1000 ){ nb = "0" + j ;}
             var currentClip = tracksToAnalyse[i].clips[j];
             var startTime = currentClip.start.ticks ;
             var endTime = currentClip.end.ticks ;
             currentSequence.setInPoint( startTime );
             currentSequence.setOutPoint( endTime );
             if( $.os.search( "Windows" ) != - 1 ){
-                currentSequence.exportAsMediaDirect( destinationFolder.fsName.replace( "\\" , "\\\\" ) + "\\" + currentClip.name + ".mov" , Folder.myDocuments.fsName.replace(" \\" , "\\" ) + "\\Adobe\\Adobe Media Encoder\\23.0\\Presets\\CTbox.epr" , 1 );
+                currentSequence.exportAsMediaDirect( destinationFolder.fsName.replace( "\\" , "\\\\" ) + "\\" + currentClip.name + "_" + nb + ".mov" , Folder.myDocuments.fsName.replace(" \\" , "\\" ) + "\\Adobe\\Adobe Media Encoder\\23.0\\Presets\\CTbox.epr" , 1 );
             } else {
-                currentSequence.exportAsMediaDirect( destinationFolder.fsName + "/" + currentClip.name + ".mov" , Folder.myDocuments.fsName + "/Adobe/Adobe Media Encoder/23.0/Presets/CTbox.epr" , 1 );
+                currentSequence.exportAsMediaDirect( destinationFolder.fsName + "/" + currentClip.name + "_" + nb + ".mov" , Folder.myDocuments.fsName + "/Adobe/Adobe Media Encoder/23.0/Presets/CTbox.epr" , 1 );
             }
         }
     }
