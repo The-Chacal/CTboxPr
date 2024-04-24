@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ExtensionManifest ExtensionBundleId="CTbox" ExtensionBundleVersion="1.0.0" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest ExtensionBundleId="CTbox" ExtensionBundleVersion="1.0.1" Version="7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <ExtensionList>
-        <Extension Id="CTbox.panel" Version="0.0.1" />
+        <Extension Id="CTbox.panel" Version="1.0.1" />
     </ExtensionList>
     <ExecutionEnvironment>
         <HostList>
-        <Host Name="PPRO" Version="9.0" />
+        <Host Name="PPRO" Version="1.0" />
         </HostList>
         <LocaleList>
         <Locale Code="All" />
         </LocaleList>
         <RequiredRuntimeList>
-        <RequiredRuntime Name="CSXS" Version="7.0" />
+        <RequiredRuntime Name="CSXS" Version="1.0" />
         </RequiredRuntimeList>
     </ExecutionEnvironment>
     <DispatchInfoList>
